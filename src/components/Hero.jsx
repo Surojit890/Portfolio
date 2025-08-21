@@ -21,9 +21,6 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-4">
-              Available for work
-            </Badge>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Hi, I'm{' '}
@@ -35,12 +32,11 @@ const Hero = () => {
                 sequence={[
                   'Full Stack Developer',
                   2000,
-                  'Frontend Developer',
+                  'Gamer',
                   2000,
-                  'Backend Developer',
-                  2000,
-                  'React Developer',
-                  2000,
+                'Music Enthusiast',
+                2000
+
                 ]}
                 wrapper="span"
                 speed={50}
@@ -57,9 +53,15 @@ const Hero = () => {
               <Button onClick={() => scrollToSection('projects')} size="lg">
                 View My Work
               </Button>
-              <Button variant="outline" size="lg">
-                <FaDownload className="mr-2 h-4 w-4" />
-                Download Resume
+              <Button variant="outline" size="lg" asChild>
+                <a
+                  href="/Surojit-Resume.pdf"
+                  download="Surojit_Mondal_Resume.pdf"
+                  className="flex items-center gap-2"
+                >
+                  <FaDownload className="h-4 w-4" />
+                  Download Resume
+                </a>
               </Button>
             </div>
             
