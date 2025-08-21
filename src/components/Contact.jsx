@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 import { useInView } from 'react-intersection-observer'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -19,23 +20,75 @@ const Contact = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
+
+  // EmailJS Configuration from environment variables
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+  // Initialize EmailJS
+  useEffect(() => {
+    if (EMAILJS_PUBLIC_KEY) {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+    } else {
+      console.error('EmailJS public key not found in environment variables')
+    }
+  }, [])
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
+    // Clear status when user starts typing
+    if (submitStatus) setSubmitStatus(null)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    setTimeout(() => {
+    setSubmitStatus(null)
+
+    // Validate environment variables
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('EmailJS configuration missing. Please check your .env file.')
+      setSubmitStatus('error')
       setIsSubmitting(false)
+      return
+    }
+
+    try {
+      console.log('Sending email with data:', {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      })
+
+      // EmailJS send function - no need to pass public key since we initialized it
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'msurojit890@gmail.com',
+        }
+      )
+
+      console.log('Email sent successfully:', result)
+      setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
-      alert('Message sent successfully!')
-    }, 2000)
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      console.error('Error details:', error.text || error.message)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }
@@ -143,6 +196,22 @@ const Contact = () => {
                       className="text-sm resize-none"
                       required
                     />
+                    
+                    {/* Status Messages */}
+                    {submitStatus === 'success' && (
+                      <div className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-md text-green-700 dark:bg-green-950 dark:border-green-800 dark:text-green-300">
+                        <FaCheckCircle className="h-4 w-4" />
+                        <span className="text-sm">Message sent successfully! I'll get back to you soon.</span>
+                      </div>
+                    )}
+                    
+                    {submitStatus === 'error' && (
+                      <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-md text-red-700 dark:bg-red-950 dark:border-red-800 dark:text-red-300">
+                        <FaExclamationTriangle className="h-4 w-4" />
+                        <span className="text-sm">Failed to send message. Please try again or contact me directly via email.</span>
+                      </div>
+                    )}
+                    
                     <Button type="submit" className="w-full" disabled={isSubmitting}>
                       {isSubmitting ? (
                         'Sending...'

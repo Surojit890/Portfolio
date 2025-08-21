@@ -21,15 +21,21 @@ const Footer = () => {
           
           <div className="flex flex-col items-center md:items-end">
             <div className="flex space-x-2 mb-4">
-              <Button variant="ghost" size="icon">
-                <FaGithub className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <FaLinkedin className="h-4 w-4" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <FaEnvelope className="h-4 w-4" />
-              </Button>
+              <a href="https://github.com/Surojit890" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon">
+                  <FaGithub className="h-4 w-4" />
+                </Button>
+              </a>
+              <a href="https://www.linkedin.com/in/surojit-mondal-123456789/" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon">
+                  <FaLinkedin className="h-4 w-4" />
+                </Button>
+              </a>
+              <a href="mailto:msurojit890@gmail.com" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon">
+                  <FaEnvelope className="h-4 w-4" />
+                </Button>
+              </a>
             </div>
             
             <Button 
