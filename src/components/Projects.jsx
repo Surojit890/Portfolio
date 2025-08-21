@@ -50,17 +50,7 @@ const Projects = () => {
       github: "https://github.com/Surojit890/Book-recommendation-System",
       live: "https://surojit890-book-recommendation-system-app-tql5vo.streamlit.app/",
       featured: true,
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "This very portfolio website built with React, Tailwind CSS, and Framer Motion for smooth animations.",
-      technologies: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-      image: "/api/placeholder/400/250",
-      github: "https://github.com/yourusername/portfolio",
-      live: "https://yourportfolio.vercel.app",
-      featured: false,
-    },
+    }
   ];
 
   return (
@@ -78,54 +68,53 @@ const Projects = () => {
               Featured Projects
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Here are some of the projects I've worked on that showcase my
-              skills and experience
+              Here are some of the projects I've worked on that showcase my skills and experience
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
             {projects.map((project, index) => (
-              <motion.div key={project.title} variants={itemVariants}>
-                <Card
-                  className={`h-full ${project.featured ? "border-primary shadow-lg" : ""}`}
-                >
+              <motion.div key={project.title} variants={itemVariants} className="flex-1 max-w-lg mx-auto lg:mx-0">
+                <Card className="h-full border-primary shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="relative">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-48 object-cover rounded-t-lg"
+                      className="w-full h-56 object-cover rounded-t-lg"
                     />
-                    {project.featured && (
-                      <Badge className="absolute top-2 right-2">Featured</Badge>
-                    )}
+                    <Badge className="absolute top-3 right-3 bg-primary text-primary-foreground">
+                      Featured
+                    </Badge>
                   </div>
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                      {project.title}
-                      <div className="flex gap-2">
-                        <Button variant="ghost" size="icon" asChild>
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <FaGithub className="h-4 w-4" />
-                          </a>
-                        </Button>
-                        <Button variant="ghost" size="icon" asChild>
-                          <a
-                            href={project.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <FaExternalLinkAlt className="h-4 w-4" />
-                          </a>
-                        </Button>
-                      </div>
-                    </CardTitle>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                    <div className="flex gap-2">
+                      <Button variant="outline" size="sm" asChild className="flex-1">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2"
+                        >
+                          <FaGithub className="h-4 w-4" />
+                          Code
+                        </a>
+                      </Button>
+                      <Button size="sm" asChild className="flex-1">
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2"
+                        >
+                          <FaExternalLinkAlt className="h-4 w-4" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    </div>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground mb-4">
+                  <CardContent className="pt-0">
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -133,7 +122,7 @@ const Projects = () => {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="text-xs"
+                          className="text-xs px-2 py-1"
                         >
                           {tech}
                         </Badge>
