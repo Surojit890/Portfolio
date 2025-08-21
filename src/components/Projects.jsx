@@ -135,9 +135,16 @@ const Projects = () => {
           </div>
         
           <motion.div variants={itemVariants} className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              <FaGithub className="mr-2 h-4 w-4" />
-              View All Projects on GitHub
+            <Button variant="outline" size="lg" asChild>
+              <a
+                href="https://github.com/Surojit890"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <FaGithub className="h-4 w-4" />
+                View All Projects on GitHub
+              </a>
             </Button>
           </motion.div>
         </motion.div>
