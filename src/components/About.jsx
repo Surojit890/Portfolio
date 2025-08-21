@@ -131,7 +131,7 @@ const About = () => {
                             Completed Secondary Education with excellent performance.
                           </p>
                           <Badge variant="outline" className="text-teal-600 border-teal-400 dark:text-teal-400 text-xs">
-                            Percentage: 90.00%
+                            Percentage: 78.00%
                           </Badge>
                         </div>
                       </div>
