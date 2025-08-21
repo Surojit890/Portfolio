@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 
-
 const Projects = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -43,14 +42,14 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: "Weather Dashboard",
+      title: "Book-Recommendation-System",
       description:
-        "A responsive weather dashboard that displays current weather and forecasts for multiple cities with beautiful data visualizations.",
-      technologies: ["React", "Chart.js", "OpenWeather API", "CSS3"],
-      image: "/api/placeholder/400/250",
-      github: "https://github.com/yourusername/project3",
-      live: "https://project3.vercel.app",
-      featured: false,
+        "A Python-based book recommendation system that analyzes user preferences and book data to suggest personalized reading options. Utilizes data processing and machine learning techniques for accurate recommendations, with a simple interface for user interaction.",
+      technologies: ["Python", "Pandas", "Scikit-learn", "Flask"],
+      image: "/Book-Recommendation-System.png",
+      github: "https://github.com/Surojit890/Book-recommendation-System",
+      live: "https://surojit890-book-recommendation-system-app-tql5vo.streamlit.app/",
+      featured: true,
     },
     {
       title: "Portfolio Website",
@@ -145,7 +144,7 @@ const Projects = () => {
               </motion.div>
             ))}
           </div>
-
+        
           <motion.div variants={itemVariants} className="text-center mt-12">
             <Button variant="outline" size="lg">
               <FaGithub className="mr-2 h-4 w-4" />
