@@ -67,13 +67,19 @@ const Hero = () => {
             
             <div className="flex justify-center space-x-4">
               <Button variant="ghost" size="icon">
-                <FaGithub className="h-5 w-5" />
+                <a href="https://github.com/Surojit890" target="_blank" rel="noopener noreferrer">
+                  <FaGithub className="h-5 w-5" />
+                </a>
               </Button>
               <Button variant="ghost" size="icon">
-                <FaLinkedin className="h-5 w-5" />
+                <a href="https://www.linkedin.com/in/surojit-mondal-123456789/" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin className="h-5 w-5" />
+                </a>
               </Button>
               <Button variant="ghost" size="icon">
-                <FaEnvelope className="h-5 w-5" />
+                <a href="mailto:msurojit890@gmail.com" target="_blank" rel="noopener noreferrer">
+                  <FaEnvelope className="h-5 w-5" />
+                </a>
               </Button>
             </div>
           </motion.div>
