@@ -51,22 +51,39 @@ const Header = () => {
           <ModeToggle />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-accent">
                 <FaBars className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="flex flex-col space-y-4 mt-8">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="text-left text-foreground/60 hover:text-foreground transition-colors"
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </nav>
+            <SheetContent side="right" className="w-[280px] p-0">
+              <div className="flex flex-col h-full">
+                {/* Header */}
+                <div className="px-6 py-6 border-b border-border">
+                  <h2 className="text-lg font-semibold">Navigation</h2>
+                </div>
+                
+                {/* Menu Items */}
+                <nav className="flex-1 px-2 py-4">
+                  {navItems.map((item, index) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className="flex items-center w-full px-4 py-3 mx-2 mb-1 text-left text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200 group"
+                    >
+                      <span className="flex items-center justify-center w-2 h-2 mr-3 bg-primary/30 rounded-full group-hover:bg-primary transition-colors">
+                      </span>
+                      {item.name}
+                    </button>
+                  ))}
+                </nav>
+                
+                {/* Footer */}
+                <div className="px-6 py-4 border-t border-border">
+                  <p className="text-xs text-muted-foreground text-center">
+                    © 2025 Surojit Mondal
+                  </p>
+                </div>
+              </div>
             </SheetContent>
           </Sheet>
         </div>

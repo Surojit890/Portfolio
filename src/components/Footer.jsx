@@ -47,7 +47,7 @@ const Footer = () => {
         
         <div className="text-center text-sm text-muted-foreground">
           <p className="flex items-center justify-center gap-1">
-            © {currentYear} Surojit Mondal . Made with{' '}
+            © {currentYear} Surojit Mondal . Made with{''}
             <FaHeart className="h-4 w-4 text-red-500 fill-current" />{' '}
             using React & Tailwind CSS
           </p>

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { useInView } from 'react-intersection-observer'
 import { FaReact, FaJs, FaNode, FaGitAlt, FaDocker, FaCode, FaHtml5, FaGithub } from 'react-icons/fa'
-import { SiPostgresql, SiMongodb, SiFigma, SiPostman, SiVite, SiTailwindcss } from 'react-icons/si'
+import { SiPostgresql, SiMongodb, SiFigma, SiPostman, SiVite, SiTailwindcss, SiVercel } from 'react-icons/si'
 
 const Skills = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -26,6 +26,7 @@ const Skills = () => {
   const softwareTools = [
     { name: 'Visual Studio Code', icon: FaCode, color: 'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300' },
     { name: 'GitHub', icon: FaGithub, color: 'bg-gray-50 text-gray-700 dark:bg-gray-950 dark:text-gray-300' },
+    { name: 'Vercel', icon: SiVercel, color: 'bg-black text-white dark:bg-white dark:text-black' },
     { name: 'Figma', icon: SiFigma, color: 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300' },
     { name: 'Postman', icon: SiPostman, color: 'bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300' },
   ]
@@ -33,7 +34,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-16">
       <div className="w-full px-4 lg:px-6 xl:px-8">
-        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="max-w-5xl mx-auto">
+        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="w-full mx-auto">
           
           <motion.div variants={item} className="text-center mb-8">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Technical Skills</h2>

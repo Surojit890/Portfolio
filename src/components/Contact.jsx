@@ -50,16 +50,16 @@ const Contact = () => {
   return (
     <section id="contact" className="py-16">
       <div className="w-full px-4 lg:px-6 xl:px-8">
-        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="max-w-4xl mx-auto">
+        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="w-full mx-auto">
           
           <motion.div variants={item} className="text-center mb-10">
             <h2 className="text-2xl md:text-3xl font-bold mb-3">Get In Touch</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Let's discuss opportunities and collaborate on exciting projects
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {/* Contact Information */}
             <motion.div variants={item}>
               <Card className="h-full">

@@ -37,16 +37,16 @@ const About = () => {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="max-w-4xl mx-auto"
+          className="w-full mx-auto"
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               I'm a Computer Science student at Adamas University with experience in software development and backend technologies.
             </p>
           </motion.div>
 
-          <div className="max-w-3xl mx-auto">
+          <div className="w-full mx-auto">
             <motion.div variants={itemVariants}>
               <Card className="w-full">
                 <CardContent className="p-6">

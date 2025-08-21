@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
       <div className="w-full px-2 sm:px-4 lg:px-6 xl:px-8 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="w-full mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
