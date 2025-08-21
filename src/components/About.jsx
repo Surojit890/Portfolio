@@ -30,7 +30,7 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="py-20 bg-secondary/10">
+    <section id="about" className="py-20 bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 dark:from-purple-950 dark:via-blue-950 dark:to-teal-950">
       <div className="w-full px-4 lg:px-6 xl:px-8">
         <motion.div
           ref={ref}
@@ -40,7 +40,7 @@ const About = () => {
           className="w-full mx-auto"
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">About Me</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               I'm a Computer Science student at Adamas University with experience in software development and backend technologies.
             </p>

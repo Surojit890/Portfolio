@@ -75,21 +75,22 @@ const Projects = () => {
           <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
             {projects.map((project, index) => (
               <motion.div key={project.title} variants={itemVariants} className="flex-1 max-w-lg mx-auto lg:mx-0">
-                <Card className="h-full border-primary shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative">
+                <Card className="h-full border-primary shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-br from-card via-card to-primary/5">
+                  <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-56 object-cover rounded-t-lg"
+                      className="w-full h-56 object-cover transition-transform duration-300 hover:scale-110"
                     />
-                    <Badge className="absolute top-3 right-3 bg-primary text-primary-foreground">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    <Badge className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0">
                       Featured
                     </Badge>
                   </div>
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                    <CardTitle className="text-xl mb-2 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">{project.title}</CardTitle>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm" asChild className="flex-1">
+                      <Button variant="outline" size="sm" asChild className="flex-1 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300">
                         <a
                           href={project.github}
                           target="_blank"
@@ -100,7 +101,7 @@ const Projects = () => {
                           Code
                         </a>
                       </Button>
-                      <Button size="sm" asChild className="flex-1">
+                      <Button size="sm" asChild className="flex-1 bg-gradient-to-r from-primary to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
                         <a
                           href={project.live}
                           target="_blank"

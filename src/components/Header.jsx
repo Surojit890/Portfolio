@@ -24,10 +24,10 @@ const Header = () => {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center justify-between px-2 sm:px-4 lg:px-6 xl:px-8">
         <div className="flex items-center space-x-2">
-          <h1 className="text-xl font-bold">Surojit Mondal</h1>
+          <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Surojit Mondal</h1>
         </div>
 
         {/* Desktop Navigation */}
@@ -37,9 +37,10 @@ const Header = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground/60 hover:text-foreground transition-colors"
+                className="text-foreground/60 hover:text-primary hover:scale-105 transition-all duration-200 relative group"
               >
                 {item.name}
+                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </button>
             ))}
           </nav>

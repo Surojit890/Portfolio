@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -22,19 +22,10 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
-  // EmailJS Configuration from environment variables
-  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
-  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-
-  // Initialize EmailJS
-  useEffect(() => {
-    if (EMAILJS_PUBLIC_KEY) {
-      emailjs.init(EMAILJS_PUBLIC_KEY)
-    } else {
-      console.error('EmailJS public key not found in environment variables')
-    }
-  }, [])
+  // EmailJS Configuration (You'll need to replace these with your actual values)
+  const EMAILJS_SERVICE_ID = 'service_gqhkv6c'
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
+  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
 
   const handleChange = (e) => {
     setFormData({
@@ -50,23 +41,8 @@ const Contact = () => {
     setIsSubmitting(true)
     setSubmitStatus(null)
 
-    // Validate environment variables
-    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      console.error('EmailJS configuration missing. Please check your .env file.')
-      setSubmitStatus('error')
-      setIsSubmitting(false)
-      return
-    }
-
     try {
-      console.log('Sending email with data:', {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-      })
-
-      // EmailJS send function - no need to pass public key since we initialized it
+      // EmailJS send function
       const result = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -75,16 +51,16 @@ const Contact = () => {
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
-          to_email: 'msurojit890@gmail.com',
-        }
+          to_email: 'msurojit890@gmail.com', // Your email
+        },
+        EMAILJS_PUBLIC_KEY
       )
 
-      console.log('Email sent successfully:', result)
+      console.log('Email sent successfully:', result.text)
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
       console.error('Email sending failed:', error)
-      console.error('Error details:', error.text || error.message)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)

@@ -13,7 +13,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
+    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950 dark:via-purple-950 dark:to-pink-950">
       <div className="w-full px-2 sm:px-4 lg:px-6 xl:px-8 py-20">
         <div className="w-full mx-auto text-center">
           <motion.div
@@ -24,7 +24,7 @@ const Hero = () => {
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Hi, I'm{' '}
-              <span className="text-primary">Surojit Mondal</span>
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Surojit Mondal</span>
             </h1>
             
             <div className="text-xl md:text-2xl text-muted-foreground mb-8 h-16">
@@ -50,10 +50,10 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button onClick={() => scrollToSection('projects')} size="lg">
+              <Button onClick={() => scrollToSection('projects')} size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                 View My Work
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="border-primary hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300">
                 <a
                   href="/Surojit-Resume.pdf"
                   download="Surojit_Mondal_Resume.pdf"
@@ -66,17 +66,17 @@ const Hero = () => {
             </div>
             
             <div className="flex justify-center space-x-4">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300 hover:scale-110">
                 <a href="https://github.com/Surojit890" target="_blank" rel="noopener noreferrer">
                   <FaGithub className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300 hover:scale-110">
                 <a href="https://www.linkedin.com/in/surojit-mondal-123456789/" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300 hover:scale-110">
                 <a href="mailto:msurojit890@gmail.com" target="_blank" rel="noopener noreferrer">
                   <FaEnvelope className="h-5 w-5" />
                 </a>
