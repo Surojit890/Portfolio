@@ -1,0 +1,71 @@
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { Menu } from 'lucide-react'
+
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsOpen(false)
+  }
+
+  const navItems = [
+    { name: 'Home', id: 'hero' },
+    { name: 'About', id: 'about' },
+    { name: 'Skills', id: 'skills' },
+    { name: 'Projects', id: 'projects' },
+    { name: 'Contact', id: 'contact' },
+  ]
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        <div className="flex items-center space-x-2">
+          <h1 className="text-xl font-bold">Your Name</h1>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="text-foreground/60 hover:text-foreground transition-colors"
+            >
+              {item.name}
+            </button>
+          ))}
+        </nav>
+
+        {/* Mobile Navigation */}
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right">
+            <nav className="flex flex-col space-y-4 mt-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-left text-foreground/60 hover:text-foreground transition-colors"
+                >
+                  {item.name}
+                </button>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </header>
+  )
+}
+
+export default Header

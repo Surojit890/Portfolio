@@ -1,0 +1,60 @@
+import { Button } from '@/components/ui/button'
+import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+
+const Footer = () => {
+  const currentYear = new Date().getFullYear()
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  return (
+    <footer className="bg-background border-t">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <h3 className="text-lg font-semibold mb-2">Your Name</h3>
+            <p className="text-sm text-muted-foreground">
+              Building digital experiences with passion and precision
+            </p>
+          </div>
+          
+          <div className="flex flex-col items-center md:items-end">
+            <div className="flex space-x-2 mb-4">
+              <Button variant="ghost" size="icon">
+                <Github className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon">
+                <Linkedin className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon">
+                <Mail className="h-4 w-4" />
+              </Button>
+            </div>
+            
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={scrollToTop}
+              className="text-sm text-muted-foreground hover:text-primary"
+            >
+              Back to top ↑
+            </Button>
+          </div>
+        </div>
+        
+        <hr className="my-6" />
+        
+        <div className="text-center text-sm text-muted-foreground">
+          <p className="flex items-center justify-center gap-1">
+            © {currentYear} Your Name. Made with{' '}
+            <Heart className="h-4 w-4 text-red-500 fill-current" />{' '}
+            using React & Tailwind CSS
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+export default Footer
