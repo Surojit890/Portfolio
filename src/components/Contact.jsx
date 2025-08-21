@@ -66,26 +66,26 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'your.email@example.com',
+      value: 'msurojit890@gmail.com',
       href: 'mailto:your.email@example.com'
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      value: '+91 7872074546',
+      href: 'null'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Your City, Country',
+      value: 'Kolkata',
       href: null
     }
   ]
 
   return (
     <section id="contact" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 lg:px-6 xl:px-8">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -96,7 +96,7 @@ const Contact = () => {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind or just want to chat? I'd love to hear from you!
+             Let's discuss opportunities and collaborate on exciting projects 
             </p>
           </motion.div>
 

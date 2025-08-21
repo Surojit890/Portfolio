@@ -10,10 +10,10 @@ const Footer = () => {
 
   return (
     <footer className="bg-background border-t">
-      <div className="container mx-auto px-4 py-8">
+      <div className="w-full px-4 lg:px-6 xl:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <h3 className="text-lg font-semibold mb-2">Your Name</h3>
+            <h3 className="text-lg font-semibold mb-2">Surojit Mondal</h3>
             <p className="text-sm text-muted-foreground">
               Building digital experiences with passion and precision
             </p>
@@ -47,7 +47,7 @@ const Footer = () => {
         
         <div className="text-center text-sm text-muted-foreground">
           <p className="flex items-center justify-center gap-1">
-            © {currentYear} Your Name. Made with{' '}
+            © {currentYear} Surojit Mondal . Made with{' '}
             <Heart className="h-4 w-4 text-red-500 fill-current" />{' '}
             using React & Tailwind CSS
           </p>

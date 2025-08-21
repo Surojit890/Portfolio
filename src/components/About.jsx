@@ -30,7 +30,7 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 bg-secondary/10">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 lg:px-6 xl:px-8">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -41,7 +41,7 @@ const About = () => {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get to know more about who I am, what I do, and what skills I have
+              I'm a Computer Science student at Adamas University with experience in software development and backend technologies.
             </p>
           </motion.div>
 
@@ -54,46 +54,10 @@ const About = () => {
                     I'm a passionate full-stack developer with a strong background in modern web technologies. 
                     I love creating digital experiences that are not only visually appealing but also highly functional and user-friendly.
                   </p>
-                  <p className="text-muted-foreground mb-4">
-                    With several years of experience in the field, I've worked on various projects ranging from 
-                    small business websites to large-scale enterprise applications.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">Problem Solver</Badge>
-                    <Badge variant="secondary">Team Player</Badge>
-                    <Badge variant="secondary">Quick Learner</Badge>
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-4">What I Do</h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-medium mb-2">Frontend Development</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Creating responsive and interactive user interfaces using React, Vue, and modern CSS frameworks.
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-2">Backend Development</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Building robust server-side applications with Node.js, Python, and various databases.
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-medium mb-2">Full-Stack Solutions</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Delivering complete web applications from conception to deployment.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
           </div>
         </motion.div>
       </div>

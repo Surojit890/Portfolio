@@ -14,7 +14,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/20">
-      <div className="container mx-auto px-4 py-20">
+      <div className="w-full px-2 sm:px-4 lg:px-6 xl:px-8 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ const Hero = () => {
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Hi, I'm{' '}
-              <span className="text-primary">Your Name</span>
+              <span className="text-primary">Surojit Mondal</span>
             </h1>
             
             <div className="text-xl md:text-2xl text-muted-foreground mb-8 h-16">
