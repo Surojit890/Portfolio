@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa'
 import { useInView } from 'react-intersection-observer'
 
 const Contact = () => {
@@ -64,19 +64,19 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: Mail,
+      icon: FaEnvelope,
       label: 'Email',
       value: 'msurojit890@gmail.com',
-      href: 'mailto:your.email@example.com'
+      href: 'mailto:msurojit890@gmail.com'
     },
     {
-      icon: Phone,
+      icon: FaPhone,
       label: 'Phone',
       value: '+91 7872074546',
-      href: 'null'
+      href: 'tel:+917872074546'
     },
     {
-      icon: MapPin,
+      icon: FaMapMarkerAlt,
       label: 'Location',
       value: 'Kolkata',
       href: null
@@ -102,40 +102,55 @@ const Contact = () => {
 
           <div className="grid lg:grid-cols-2 gap-8">
             <motion.div variants={itemVariants}>
-              <Card>
+              <Card className="h-full">
                 <CardHeader>
-                  <CardTitle>Contact Information</CardTitle>
+                  <CardTitle className="text-xl">Contact Information</CardTitle>
+                  <p className="text-muted-foreground">Get in touch with me through any of these channels</p>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  {contactInfo.map((info) => (
-                    <div key={info.label} className="flex items-center space-x-3">
-                      <div className="flex-shrink-0">
-                        <info.icon className="h-5 w-5 text-primary" />
+                <CardContent className="space-y-8">
+                  {/* Contact Items */}
+                  <div className="space-y-6">
+                    {contactInfo.map((info) => (
+                      <div key={info.label} className="group">
+                        <div className="flex items-center space-x-4 p-4 rounded-lg border border-border/50 hover:border-primary/30 hover:bg-accent/20 transition-all duration-300">
+                          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                            <info.icon className="h-6 w-6 text-primary" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-foreground mb-1">{info.label}</h4>
+                            {info.href && info.href !== 'null' ? (
+                              <a
+                                href={info.href}
+                                className="text-muted-foreground hover:text-primary transition-colors break-words"
+                                target={info.href.startsWith('mailto:') ? '_self' : '_blank'}
+                                rel={info.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
+                              >
+                                {info.value}
+                              </a>
+                            ) : (
+                              <p className="text-muted-foreground">{info.value}</p>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-sm font-medium">{info.label}</p>
-                        {info.href ? (
-                          <a
-                            href={info.href}
-                            className="text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            {info.value}
-                          </a>
-                        ) : (
-                          <p className="text-muted-foreground">{info.value}</p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                   
-                  <div className="pt-6">
-                    <h4 className="font-medium mb-3">Let's connect!</h4>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Feel free to reach out for collaborations, opportunities, or just a friendly chat about technology.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary">Available for freelance</Badge>
-                      <Badge variant="secondary">Open to opportunities</Badge>
+                  {/* Call to Action Section */}
+                  <div className="pt-6 border-t border-border/50">
+                    <div className="text-center space-y-4">
+                      <h4 className="text-lg font-semibold">Let's connect!</h4>
+                      <p className="text-muted-foreground">
+                        Feel free to reach out for collaborations, opportunities, or just a friendly chat about technology.
+                      </p>
+                      <div className="flex flex-wrap justify-center gap-2">
+                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800">
+                          ✅ Available for freelance
+                        </Badge>
+                        <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800">
+                          🚀 Open to opportunities
+                        </Badge>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -190,7 +205,7 @@ const Contact = () => {
                         'Sending...'
                       ) : (
                         <>
-                          <Send className="mr-2 h-4 w-4" />
+                          <FaPaperPlane className="mr-2 h-4 w-4" />
                           Send Message
                         </>
                       )}

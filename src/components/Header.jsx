@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu } from 'lucide-react'
+import { FaBars } from 'react-icons/fa'
 import { ModeToggle } from './mode-toggle'
 
 const Header = () => {
@@ -52,7 +52,7 @@ const Header = () => {
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
+                <FaBars className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right">

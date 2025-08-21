@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Github, Linkedin, Mail, Download } from 'lucide-react'
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa'
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
@@ -58,20 +58,20 @@ const Hero = () => {
                 View My Work
               </Button>
               <Button variant="outline" size="lg">
-                <Download className="mr-2 h-4 w-4" />
-                Download CV
+                <FaDownload className="mr-2 h-4 w-4" />
+                Download Resume
               </Button>
             </div>
             
             <div className="flex justify-center space-x-4">
               <Button variant="ghost" size="icon">
-                <Github className="h-5 w-5" />
+                <FaGithub className="h-5 w-5" />
               </Button>
               <Button variant="ghost" size="icon">
-                <Linkedin className="h-5 w-5" />
+                <FaLinkedin className="h-5 w-5" />
               </Button>
               <Button variant="ghost" size="icon">
-                <Mail className="h-5 w-5" />
+                <FaEnvelope className="h-5 w-5" />
               </Button>
             </div>
           </motion.div>

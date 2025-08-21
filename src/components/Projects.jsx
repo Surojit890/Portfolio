@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Github, ExternalLink } from 'lucide-react'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 import { useInView } from 'react-intersection-observer'
 
 const Projects = () => {
@@ -106,12 +106,12 @@ const Projects = () => {
                       <div className="flex gap-2">
                         <Button variant="ghost" size="icon" asChild>
                           <a href={project.github} target="_blank" rel="noopener noreferrer">
-                            <Github className="h-4 w-4" />
+                            <FaGithub className="h-4 w-4" />
                           </a>
                         </Button>
                         <Button variant="ghost" size="icon" asChild>
                           <a href={project.live} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4" />
+                            <FaExternalLinkAlt className="h-4 w-4" />
                           </a>
                         </Button>
                       </div>
@@ -134,7 +134,7 @@ const Projects = () => {
 
           <motion.div variants={itemVariants} className="text-center mt-12">
             <Button variant="outline" size="lg">
-              <Github className="mr-2 h-4 w-4" />
+              <FaGithub className="mr-2 h-4 w-4" />
               View All Projects on GitHub
             </Button>
           </motion.div>

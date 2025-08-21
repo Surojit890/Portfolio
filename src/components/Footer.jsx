@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -22,13 +22,13 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-end">
             <div className="flex space-x-2 mb-4">
               <Button variant="ghost" size="icon">
-                <Github className="h-4 w-4" />
+                <FaGithub className="h-4 w-4" />
               </Button>
               <Button variant="ghost" size="icon">
-                <Linkedin className="h-4 w-4" />
+                <FaLinkedin className="h-4 w-4" />
               </Button>
               <Button variant="ghost" size="icon">
-                <Mail className="h-4 w-4" />
+                <FaEnvelope className="h-4 w-4" />
               </Button>
             </div>
             
@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="text-center text-sm text-muted-foreground">
           <p className="flex items-center justify-center gap-1">
             © {currentYear} Surojit Mondal . Made with{' '}
-            <Heart className="h-4 w-4 text-red-500 fill-current" />{' '}
+            <FaHeart className="h-4 w-4 text-red-500 fill-current" />{' '}
             using React & Tailwind CSS
           </p>
         </div>
