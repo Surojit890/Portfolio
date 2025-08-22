@@ -1,26 +1,29 @@
-import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { FaBars } from 'react-icons/fa'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { FaBars, FaHome, FaUser, FaCog, FaProjectDiagram, FaEnvelope } from 'react-icons/fa'
 import { ModeToggle } from './mode-toggle'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
-    setIsOpen(false)
   }
 
   const navItems = [
-    { name: 'Home', id: 'hero' },
-    { name: 'About', id: 'about' },
-    { name: 'Skills', id: 'skills' },
-    { name: 'Projects', id: 'projects' },
-    { name: 'Contact', id: 'contact' },
+    { name: 'Home', id: 'hero', icon: FaHome },
+    { name: 'About', id: 'about', icon: FaUser },
+    { name: 'Skills', id: 'skills', icon: FaCog },
+    { name: 'Projects', id: 'projects', icon: FaProjectDiagram },
+    { name: 'Contact', id: 'contact', icon: FaEnvelope },
   ]
 
   return (
@@ -50,43 +53,59 @@ const Header = () => {
         {/* Mobile Navigation */}
         <div className="flex items-center space-x-2 md:hidden">
           <ModeToggle />
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-accent">
-                <FaBars className="h-5 w-5" />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="h-10 w-10 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <FaBars className="h-4 w-4" />
+                <span className="sr-only">Toggle navigation menu</span>
               </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] p-0">
-              <div className="flex flex-col h-full">
-                {/* Header */}
-                <div className="px-6 py-6 border-b border-border">
-                  <h2 className="text-lg font-semibold">Navigation</h2>
-                </div>
-                
-                {/* Menu Items */}
-                <nav className="flex-1 px-2 py-4">
-                  {navItems.map((item, index) => (
-                    <button
+            </DropdownMenuTrigger>
+            <DropdownMenuContent 
+              align="end" 
+              className="w-80 p-0 bg-gradient-to-br from-background via-background to-muted/20 border border-border/50 shadow-2xl"
+            >
+              {/* Elegant Header */}
+              <div className="px-6 py-5 bg-gradient-to-r from-blue-500/10 to-purple-600/10 border-b border-border/30">
+                <DropdownMenuLabel className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Navigation
+                </DropdownMenuLabel>
+                <p className="text-xs text-muted-foreground mt-1">Explore my portfolio</p>
+              </div>
+              
+              {/* Stylish Menu Items */}
+              <div className="p-3">
+                {navItems.map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <DropdownMenuItem
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className="flex items-center w-full px-4 py-3 mx-2 mb-1 text-left text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-accent rounded-lg transition-all duration-200 group"
+                      className="flex items-center w-full px-4 py-3 mb-2 text-left text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-gradient-to-r hover:from-blue-500/5 hover:to-purple-600/5 rounded-lg transition-all duration-300 group hover:shadow-sm border border-transparent hover:border-border/20 focus:bg-gradient-to-r focus:from-blue-500/5 focus:to-purple-600/5 cursor-pointer"
                     >
-                      <span className="flex items-center justify-center w-2 h-2 mr-3 bg-primary/30 rounded-full group-hover:bg-primary transition-colors">
-                      </span>
-                      {item.name}
-                    </button>
-                  ))}
-                </nav>
-                
-                {/* Footer */}
-                <div className="px-6 py-4 border-t border-border">
-                  <p className="text-xs text-muted-foreground text-center">
-                    © 2025 Surojit Mondal
-                  </p>
-                </div>
+                      <div className="flex items-center justify-center w-8 h-8 mr-3 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-lg group-hover:from-blue-500/20 group-hover:to-purple-600/20 transition-all duration-300">
+                        <IconComponent className="h-4 w-4 text-blue-600 group-hover:text-purple-600 transition-colors duration-300" />
+                      </div>
+                      <span className="flex-1">{item.name}</span>
+                      <div className="w-1 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </DropdownMenuItem>
+                  );
+                })}
               </div>
-            </SheetContent>
-          </Sheet>
+              
+              <DropdownMenuSeparator className="bg-gradient-to-r from-transparent via-border/50 to-transparent" />
+              
+              {/* Elegant Footer */}
+              <div className="px-6 py-4 bg-gradient-to-r from-muted/30 to-muted/10">
+                <p className="text-xs text-muted-foreground text-center">
+                  © 2025 Surojit Mondal
+                </p>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
