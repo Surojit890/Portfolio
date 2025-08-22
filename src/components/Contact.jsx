@@ -22,10 +22,17 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
-  // EmailJS Configuration (You'll need to replace these with your actual values)
-  const EMAILJS_SERVICE_ID = 'service_gqhkv6c'
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
+  // EmailJS Configuration from environment variables
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+  // Debug: Log configuration (remove in production)
+  console.log('EmailJS Config:', {
+    serviceId: EMAILJS_SERVICE_ID ? '✓ Loaded' : '✗ Missing',
+    templateId: EMAILJS_TEMPLATE_ID ? '✓ Loaded' : '✗ Missing',
+    publicKey: EMAILJS_PUBLIC_KEY ? '✓ Loaded' : '✗ Missing'
+  })
 
   const handleChange = (e) => {
     setFormData({
@@ -40,6 +47,14 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
+
+    // Validate EmailJS configuration
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('EmailJS configuration is missing. Please check your environment variables.')
+      setSubmitStatus('error')
+      setIsSubmitting(false)
+      return
+    }
 
     try {
       // EmailJS send function
