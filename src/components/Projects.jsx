@@ -45,7 +45,7 @@ const Projects = () => {
       title: "Book-Recommendation-System",
       description:
         "A Python-based book recommendation system that analyzes user preferences and book data to suggest personalized reading options. Utilizes data processing and machine learning techniques for accurate recommendations, with a simple interface for user interaction.",
-      technologies: ["Python", "Pandas", "Scikit-learn", "Flask"],
+      technologies: ["Python", "Pandas", "Open Library API ","Streamlit"],
       image: "/Book-Recommendation-System.png",
       github: "https://github.com/Surojit890/Book-recommendation-System",
       live: "https://surojit890-book-recommendation-system-app-tql5vo.streamlit.app/",
