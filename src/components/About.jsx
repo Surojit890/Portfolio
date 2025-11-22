@@ -30,110 +30,86 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-purple-50 via-blue-50 to-teal-50 dark:from-purple-950 dark:via-blue-950 dark:to-teal-950">
-      <div className="w-full px-4 lg:px-6 xl:px-8">
+    <section id="about" className="py-24 bg-secondary/30">
+      <div className="container px-4 md:px-6">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="w-full mx-auto"
+          className="space-y-12"
         >
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">About Me</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <motion.div variants={itemVariants} className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">About Me</h2>
+            <p className="text-lg text-muted-foreground max-w-[700px] mx-auto">
               I'm a Computer Science student at Adamas University with experience in software development and backend technologies.
             </p>
           </motion.div>
 
-          <div className="w-full mx-auto">
+          <div className="max-w-3xl mx-auto">
             <motion.div variants={itemVariants}>
-              <Card className="w-full">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-center mb-6">
-                    <FaGraduationCap className="h-6 w-6 text-primary mr-3" />
-                    <h3 className="text-xl font-semibold">Education</h3>
+              <Card className="border-border bg-card shadow-lg">
+                <CardContent className="p-8">
+                  <div className="flex items-center mb-8">
+                    <div className="p-3 rounded-full bg-primary/10 mr-4">
+                      <FaGraduationCap className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-semibold">Education</h3>
                   </div>
                   
                   {/* Education Timeline */}
-                  <div className="max-w-2xl mx-auto">
-                    <div className="space-y-6">
-                      {/* Current Education */}
-                      <div className="relative pl-6 border-l-2 border-primary">
-                        <div className="absolute -left-2 top-0 w-4 h-4 bg-primary rounded-full border-2 border-background"></div>
-                        <div className="bg-primary/5 rounded-lg p-4">
-                          <div className="flex items-center justify-between mb-3">
-                            <Badge variant="default" className="bg-primary text-primary-foreground text-xs">
-                              Current
-                            </Badge>
-                            <div className="flex items-center text-xs text-muted-foreground">
-                              <FaCalendarAlt className="h-3 w-3 mr-1" />
-                              2022 - 2026
-                            </div>
-                          </div>
-                          <h4 className="font-semibold text-foreground mb-1">
-                            B.Tech, Computer Science & Engineering
-                          </h4>
-                          <p className="text-primary font-medium text-sm mb-2">Adamas University</p>
-                          <p className="text-xs text-muted-foreground mb-3">
-                            Currently pursuing Bachelor of Technology with specialization in Computer Science & Engineering.
-                          </p>
-                          <Badge variant="outline" className="text-primary border-primary text-xs">
-                            Current CGPA: 7.12/10
-                          </Badge>
+                  <div className="space-y-8">
+                    {/* Current Education */}
+                    <div className="relative pl-8 border-l-2 border-primary/20">
+                      <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background"></div>
+                      <div className="space-y-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h4 className="font-bold text-lg">B.Tech, Computer Science & Engineering</h4>
+                          <Badge variant="secondary" className="text-xs">2022 - 2026</Badge>
                         </div>
+                        <p className="text-primary font-medium">Adamas University</p>
+                        <p className="text-muted-foreground text-sm">
+                          Currently pursuing Bachelor of Technology with specialization in Computer Science & Engineering.
+                        </p>
+                        <Badge variant="outline" className="text-xs mt-2">
+                          Current CGPA: 7.12/10
+                        </Badge>
                       </div>
+                    </div>
 
-                      {/* Senior Secondary */}
-                      <div className="relative pl-6 border-l-2 border-orange-400">
-                        <div className="absolute -left-2 top-0 w-4 h-4 bg-orange-400 rounded-full border-2 border-background"></div>
-                        <div className="bg-orange-50 dark:bg-orange-950/20 rounded-lg p-4">
-                          <div className="flex items-center justify-between mb-3">
-                            <Badge variant="outline" className="border-orange-400 text-orange-600 dark:text-orange-400 text-xs">
-                              Completed
-                            </Badge>
-                            <div className="flex items-center text-xs text-muted-foreground">
-                              <FaCalendarAlt className="h-3 w-3 mr-1" />
-                              2022
-                            </div>
-                          </div>
-                          <h4 className="font-semibold text-foreground mb-1">
-                            Higher Secondary (XII), CBSE
-                          </h4>
-                          <p className="text-orange-600 dark:text-orange-400 font-medium text-sm mb-2">DAV Public School</p>
-                          <p className="text-xs text-muted-foreground mb-3">
-                            Completed Higher Secondary Education in Science stream.
-                          </p>
-                          <Badge variant="outline" className="text-orange-600 border-orange-400 dark:text-orange-400 text-xs">
-                            Percentage: 68.00%
-                          </Badge>
+                    {/* Senior Secondary */}
+                    <div className="relative pl-8 border-l-2 border-primary/20">
+                      <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-muted border-4 border-background"></div>
+                      <div className="space-y-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h4 className="font-bold text-lg">Higher Secondary (XII), CBSE</h4>
+                          <Badge variant="secondary" className="text-xs">2022</Badge>
                         </div>
+                        <p className="text-primary font-medium">DAV Public School</p>
+                        <p className="text-muted-foreground text-sm">
+                          Completed Higher Secondary Education in Science stream.
+                        </p>
+                        <Badge variant="outline" className="text-xs mt-2">
+                          Percentage: 68.00%
+                        </Badge>
                       </div>
+                    </div>
 
-                      {/* Secondary */}
-                      <div className="relative pl-6 border-l-2 border-teal-400">
-                        <div className="absolute -left-2 top-0 w-4 h-4 bg-teal-400 rounded-full border-2 border-background"></div>
-                        <div className="bg-teal-50 dark:bg-teal-950/20 rounded-lg p-4">
-                          <div className="flex items-center justify-between mb-3">
-                            <Badge variant="outline" className="border-teal-400 text-teal-600 dark:text-teal-400 text-xs">
-                              Completed
-                            </Badge>
-                            <div className="flex items-center text-xs text-muted-foreground">
-                              <FaCalendarAlt className="h-3 w-3 mr-1" />
-                              2020
-                            </div>
-                          </div>
-                          <h4 className="font-semibold text-foreground mb-1">
-                            Secondary (X), CBSE
-                          </h4>
-                          <p className="text-teal-600 dark:text-teal-400 font-medium text-sm mb-2">DAV Public School</p>
-                          <p className="text-xs text-muted-foreground mb-3">
-                            Completed Secondary Education with excellent performance.
-                          </p>
-                          <Badge variant="outline" className="text-teal-600 border-teal-400 dark:text-teal-400 text-xs">
-                            Percentage: 78.00%
-                          </Badge>
+                    {/* Secondary */}
+                    <div className="relative pl-8 border-l-2 border-primary/20">
+                      <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-muted border-4 border-background"></div>
+                      <div className="space-y-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h4 className="font-bold text-lg">Secondary (X), CBSE</h4>
+                          <Badge variant="secondary" className="text-xs">2020</Badge>
                         </div>
+                        <p className="text-primary font-medium">DAV Public School</p>
+                        <p className="text-muted-foreground text-sm">
+                          Completed Secondary Education with excellent performance.
+                        </p>
+                        <Badge variant="outline" className="text-xs mt-2">
+                          Percentage: 78.00%
+                        </Badge>
                       </div>
                     </div>
                   </div>

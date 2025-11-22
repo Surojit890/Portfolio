@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
@@ -32,7 +32,7 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Movie-Ranking-App",
+      title: "Movie Ranking App",
       description:
         "A modern React-based movie discovery application with search functionality, trending movies display, and search analytics tracking using TMDB API and Appwrite backend.",
       technologies: ["React", "Vite", "Tailwind CSS", "TMDB API", "Appwrite"],
@@ -42,10 +42,10 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: "Book-Recommendation-System",
+      title: "Book Recommendation System",
       description:
-        "A Python-based book recommendation system that analyzes user preferences and book data to suggest personalized reading options. Utilizes data processing and machine learning techniques for accurate recommendations, with a simple interface for user interaction.",
-      technologies: ["Python", "Pandas", "Open Library API ","Streamlit"],
+        "A Python-based book recommendation system that analyzes user preferences and book data to suggest personalized reading options. Utilizes data processing and machine learning techniques.",
+      technologies: ["Python", "Pandas", "Open Library API", "Streamlit"],
       image: "/Book-Recommendation-System.png",
       github: "https://github.com/Surojit890/Book-recommendation-System",
       live: "https://surojit890-book-recommendation-system-app-tql5vo.streamlit.app/",
@@ -54,68 +54,54 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-secondary/10">
-      <div className="w-full px-4 lg:px-6 xl:px-8">
+    <section id="projects" className="py-24 bg-secondary/30">
+      <div className="container px-4 md:px-6">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="w-full mx-auto"
+          className="space-y-12"
         >
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <motion.div variants={itemVariants} className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
               Featured Projects
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Here are some of the projects I've worked on that showcase my skills and experience
+            <p className="text-lg text-muted-foreground max-w-[700px] mx-auto">
+              A collection of projects that showcase my passion for building digital experiences.
             </p>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto">
-            {projects.map((project, index) => (
-              <motion.div key={project.title} variants={itemVariants} className="flex-1 max-w-lg mx-auto lg:mx-0">
-                <Card className="h-full border-primary shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-gradient-to-br from-card via-card to-primary/5">
-                  <div className="relative overflow-hidden rounded-t-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {projects.map((project) => (
+              <motion.div key={project.title} variants={itemVariants}>
+                <Card className="h-full flex flex-col overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-xl hover:border-primary/50 transition-all duration-300 group">
+                  <div className="relative overflow-hidden aspect-video">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-56 object-cover transition-transform duration-300 hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <Badge className="absolute top-3 right-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0">
-                      Featured
-                    </Badge>
-                  </div>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-xl mb-2 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">{project.title}</CardTitle>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" asChild className="flex-1 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300">
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2"
-                        >
-                          <FaGithub className="h-4 w-4" />
-                          Code
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                      <Button size="icon" variant="secondary" asChild className="rounded-full hover:scale-110 transition-transform">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <FaGithub className="h-5 w-5" />
                         </a>
                       </Button>
-                      <Button size="sm" asChild className="flex-1 bg-gradient-to-r from-primary to-purple-600 hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2"
-                        >
+                      <Button size="icon" variant="secondary" asChild className="rounded-full hover:scale-110 transition-transform">
+                        <a href={project.live} target="_blank" rel="noopener noreferrer">
                           <FaExternalLinkAlt className="h-4 w-4" />
-                          Live Demo
                         </a>
                       </Button>
                     </div>
+                  </div>
+                  
+                  <CardHeader>
+                    <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                  
+                  <CardContent className="flex-1">
+                    <p className="text-muted-foreground mb-6 line-clamp-3">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -123,7 +109,7 @@ const Projects = () => {
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="text-xs px-2 py-1"
+                          className="bg-secondary/50 hover:bg-secondary transition-colors"
                         >
                           {tech}
                         </Badge>
@@ -135,8 +121,8 @@ const Projects = () => {
             ))}
           </div>
         
-          <motion.div variants={itemVariants} className="text-center mt-12">
-            <Button variant="outline" size="lg" asChild>
+          <motion.div variants={itemVariants} className="text-center pt-8">
+            <Button variant="outline" size="lg" className="rounded-full px-8" asChild>
               <a
                 href="https://github.com/Surojit890"
                 target="_blank"
@@ -144,7 +130,7 @@ const Projects = () => {
                 className="flex items-center gap-2"
               >
                 <FaGithub className="h-4 w-4" />
-                View All Projects on GitHub
+                View More on GitHub
               </a>
             </Button>
           </motion.div>

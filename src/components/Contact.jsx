@@ -27,13 +27,6 @@ const Contact = () => {
   const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
   const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-  // Debug: Log configuration (remove in production)
-  console.log('EmailJS Config:', {
-    serviceId: EMAILJS_SERVICE_ID ? '✓ Loaded' : '✗ Missing',
-    templateId: EMAILJS_TEMPLATE_ID ? '✓ Loaded' : '✗ Missing',
-    publicKey: EMAILJS_PUBLIC_KEY ? '✓ Loaded' : '✗ Missing'
-  })
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -58,7 +51,7 @@ const Contact = () => {
 
     try {
       // EmailJS send function
-      const result = await emailjs.send(
+      await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
@@ -71,7 +64,6 @@ const Contact = () => {
         EMAILJS_PUBLIC_KEY
       )
 
-      console.log('Email sent successfully:', result.text)
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
@@ -92,50 +84,50 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-16">
-      <div className="w-full px-4 lg:px-6 xl:px-8">
-        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="w-full mx-auto">
+    <section id="contact" className="py-24 bg-background">
+      <div className="container px-4 md:px-6">
+        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="space-y-12">
           
-          <motion.div variants={item} className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Get In Touch</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+          <motion.div variants={item} className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Get In Touch</h2>
+            <p className="text-lg text-muted-foreground max-w-[700px] mx-auto">
               Let's discuss opportunities and collaborate on exciting projects
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Contact Information */}
             <motion.div variants={item}>
-              <Card className="h-full">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4">Contact Information</h3>
+              <Card className="h-full border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
                   
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-6 mb-8">
                     {contactInfo.map((info) => (
-                      <div key={info.label} className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
-                        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10">
-                          <info.icon className="h-4 w-4 text-primary" />
+                      <div key={info.label} className="flex items-center space-x-4 p-4 rounded-xl hover:bg-accent/50 transition-colors group">
+                        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                          <info.icon className="h-5 w-5 text-primary" />
                         </div>
                         <div>
                           <p className="text-sm font-medium text-muted-foreground">{info.label}</p>
                           {info.href ? (
-                            <a href={info.href} className="text-sm font-semibold hover:text-primary transition-colors">
+                            <a href={info.href} className="text-base font-semibold hover:text-primary transition-colors">
                               {info.value}
                             </a>
                           ) : (
-                            <p className="text-sm font-semibold">{info.value}</p>
+                            <p className="text-base font-semibold">{info.value}</p>
                           )}
                         </div>
                       </div>
                     ))}
                   </div>
                   
-                  <div className="pt-4 border-t border-border/50">
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300">
+                  <div className="pt-6 border-t border-border/50">
+                    <div className="flex flex-wrap gap-3">
+                      <Badge variant="secondary" className="bg-green-500/10 text-green-600 hover:bg-green-500/20 border-green-500/20">
                         ✅ Available for freelance
                       </Badge>
-                      <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300">
+                      <Badge variant="secondary" className="bg-blue-500/10 text-blue-600 hover:bg-blue-500/20 border-blue-500/20">
                         🚀 Open to opportunities
                       </Badge>
                     </div>
@@ -146,60 +138,68 @@ const Contact = () => {
 
             {/* Contact Form */}
             <motion.div variants={item}>
-              <Card className="h-full">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold mb-4">Send me a message</h3>
+              <Card className="h-full border-border/50 bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-semibold mb-6">Send me a message</h3>
                   
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Input
+                          name="name"
+                          placeholder="Your Name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="bg-background/50"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Input
+                          name="email"
+                          type="email"
+                          placeholder="Your Email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="bg-background/50"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
                       <Input
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
+                        name="subject"
+                        placeholder="Subject"
+                        value={formData.subject}
                         onChange={handleChange}
-                        className="text-sm"
-                        required
-                      />
-                      <Input
-                        name="email"
-                        type="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="text-sm"
+                        className="bg-background/50"
                         required
                       />
                     </div>
-                    <Input
-                      name="subject"
-                      placeholder="Subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="text-sm"
-                      required
-                    />
-                    <Textarea
-                      name="message"
-                      placeholder="Your message..."
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="text-sm resize-none"
-                      required
-                    />
+                    <div className="space-y-2">
+                      <Textarea
+                        name="message"
+                        placeholder="Your message..."
+                        rows={4}
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="bg-background/50 resize-none"
+                        required
+                      />
+                    </div>
                     
                     {/* Status Messages */}
                     {submitStatus === 'success' && (
-                      <div className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-md text-green-700 dark:bg-green-950 dark:border-green-800 dark:text-green-300">
+                      <div className="flex items-center gap-2 p-3 bg-green-500/10 border border-green-500/20 rounded-md text-green-600">
                         <FaCheckCircle className="h-4 w-4" />
-                        <span className="text-sm">Message sent successfully! I'll get back to you soon.</span>
+                        <span className="text-sm">Message sent successfully!</span>
                       </div>
                     )}
                     
                     {submitStatus === 'error' && (
-                      <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-md text-red-700 dark:bg-red-950 dark:border-red-800 dark:text-red-300">
+                      <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-md text-red-600">
                         <FaExclamationTriangle className="h-4 w-4" />
-                        <span className="text-sm">Failed to send message. Please try again or contact me directly via email.</span>
+                        <span className="text-sm">Failed to send message. Please try again.</span>
                       </div>
                     )}
                     

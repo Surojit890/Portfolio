@@ -9,52 +9,50 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-background border-t">
-      <div className="w-full px-4 lg:px-6 xl:px-8 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-lg font-semibold mb-2">Surojit Mondal</h3>
+    <footer className="bg-background border-t border-border/50">
+      <div className="container px-4 md:px-6 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-center md:text-left">
+            <h3 className="text-lg font-bold">Surojit Mondal</h3>
             <p className="text-sm text-muted-foreground">
               Building digital experiences with passion and precision
             </p>
           </div>
           
-          <div className="flex flex-col items-center md:items-end">
-            <div className="flex space-x-2 mb-4">
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <div className="flex space-x-2">
               <a href="https://github.com/Surojit890" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon">
-                  <FaGithub className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
+                  <FaGithub className="h-5 w-5" />
                 </Button>
               </a>
               <a href="https://www.linkedin.com/in/surojit-mondal-123456789/" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon">
-                  <FaLinkedin className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
+                  <FaLinkedin className="h-5 w-5" />
                 </Button>
               </a>
               <a href="mailto:msurojit890@gmail.com" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon">
-                  <FaEnvelope className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="hover:text-primary hover:bg-primary/10">
+                  <FaEnvelope className="h-5 w-5" />
                 </Button>
               </a>
             </div>
             
             <Button 
-              variant="ghost" 
+              variant="link" 
               size="sm" 
               onClick={scrollToTop}
-              className="text-sm text-muted-foreground hover:text-primary"
+              className="text-sm text-muted-foreground hover:text-primary p-0 h-auto"
             >
               Back to top ↑
             </Button>
           </div>
         </div>
         
-        <hr className="my-6" />
-        
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="mt-8 pt-8 border-t border-border/50 text-center text-sm text-muted-foreground">
           <p className="flex items-center justify-center gap-1">
             © {currentYear} Surojit Mondal . Made with{''}
-            <FaHeart className="h-4 w-4 text-red-500 fill-current" />{' '}
+            <FaHeart className="h-4 w-4 text-red-500 fill-current animate-pulse" />{' '}
             using React & Tailwind CSS
           </p>
         </div>
