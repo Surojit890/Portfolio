@@ -32,45 +32,48 @@ const Skills = () => {
   ]
 
   return (
-    <section id="skills" className="py-24 bg-background">
-      <div className="container px-4 md:px-6">
-        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="space-y-12">
+    <section id="skills" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+      <div className="container px-4 md:px-6 relative z-10">
+        <motion.div ref={ref} variants={container} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="space-y-16">
           
           <motion.div variants={item} className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Skills & Expertise</h2>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+              Skills & Expertise
+            </h2>
             <p className="text-lg text-muted-foreground max-w-[700px] mx-auto">
               My technical toolkit and the software I use to build digital products.
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
-            <div className="space-y-6">
-              <motion.h3 variants={item} className="text-2xl font-semibold text-center md:text-left">Technical Skills</motion.h3>
-              <motion.div variants={item} className="flex flex-wrap justify-center md:justify-start gap-3">
+          <div className="grid gap-12 md:grid-cols-2 lg:gap-16 max-w-4xl mx-auto">
+            <div className="space-y-8 flex flex-col items-center">
+              <motion.h3 variants={item} className="text-2xl font-semibold text-center">Technical Skills</motion.h3>
+              <motion.div variants={item} className="flex flex-wrap justify-center gap-3">
                 {technicalSkills.map((skill) => (
                   <Badge 
                     key={skill.name} 
                     variant="secondary" 
-                    className={`rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 ${skill.color} border border-transparent hover:border-primary/20 hover:scale-105 transition-all duration-300`}
+                    className={`rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105`}
                   >
-                    <skill.icon className="h-4 w-4" />
-                    <span>{skill.name}</span>
+                    <skill.icon className={`h-4 w-4 ${skill.color.split(' ')[1]}`} />
+                    <span className="text-foreground/80">{skill.name}</span>
                   </Badge>
                 ))}
               </motion.div>
             </div>
 
-            <div className="space-y-6">
-              <motion.h3 variants={item} className="text-2xl font-semibold text-center md:text-left">Software Proficiency</motion.h3>
-              <motion.div variants={item} className="flex flex-wrap justify-center md:justify-start gap-3">
+            <div className="space-y-8 flex flex-col items-center">
+              <motion.h3 variants={item} className="text-2xl font-semibold text-center">Software Proficiency</motion.h3>
+              <motion.div variants={item} className="flex flex-wrap justify-center gap-3">
                 {softwareTools.map((tool) => (
                   <Badge 
                     key={tool.name} 
                     variant="secondary" 
-                    className={`rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 ${tool.color} border border-transparent hover:border-primary/20 hover:scale-105 transition-all duration-300`}
+                    className={`rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105`}
                   >
-                    <tool.icon className="h-4 w-4" />
-                    <span>{tool.name}</span>
+                    <tool.icon className={`h-4 w-4 ${tool.color.split(' ')[1]}`} />
+                    <span className="text-foreground/80">{tool.name}</span>
                   </Badge>
                 ))}
               </motion.div>
