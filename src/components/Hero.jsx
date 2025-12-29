@@ -118,7 +118,7 @@ const Hero = () => {
           >
             {[
               { icon: FaGithub, href: "https://github.com/Surojit890", label: "Github" },
-              { icon: FaLinkedin, href: "https://www.linkedin.com/in/surojit-mondal-123456789/", label: "LinkedIn" },
+              { icon: FaLinkedin, href: "https://www.linkedin.com/in/surojit-mondal-hcx/", label: "LinkedIn" },
               { icon: FaEnvelope, href: "mailto:msurojit890@gmail.com", label: "Email" }
             ].map((social, index) => (
               <a
