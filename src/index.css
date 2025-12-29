@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
 
 @layer base {
   :root {
@@ -10,8 +18,8 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 158 64% 52%; /* Emerald 500 */
+    --primary-foreground: 140 10% 3.9%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
@@ -22,30 +30,62 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --ring: 158 64% 52%;
     --radius: 0.75rem;
+    
+    /* Default Palette Variables (Emerald Light) */
+    --palette-bg-base-light: hsl(158, 20%, 95%);
+    --palette-bg-base-dark: hsl(160, 15%, 5%);
+    
+    --palette-bg-grad-light-1: hsla(158, 40%, 90%, 1);
+    --palette-bg-grad-light-2: hsla(170, 40%, 85%, 1);
+    --palette-bg-grad-light-3: hsla(140, 40%, 90%, 1);
+    --palette-bg-grad-light-4: hsla(160, 30%, 85%, 1);
+    --palette-bg-grad-light-5: hsla(150, 30%, 88%, 1);
+
+    --palette-bg-grad-dark-1: hsla(158, 40%, 10%, 1);
+    --palette-bg-grad-dark-2: hsla(170, 40%, 15%, 1);
+    --palette-bg-grad-dark-3: hsla(140, 40%, 10%, 1);
+    --palette-bg-grad-dark-4: hsla(160, 30%, 15%, 1);
+    --palette-bg-grad-dark-5: hsla(150, 30%, 12%, 1);
+
+    /* Mapped Variables (Default to Light) */
+    --bg-base: var(--palette-bg-base-light);
+    --bg-grad-1: var(--palette-bg-grad-light-1);
+    --bg-grad-2: var(--palette-bg-grad-light-2);
+    --bg-grad-3: var(--palette-bg-grad-light-3);
+    --bg-grad-4: var(--palette-bg-grad-light-4);
+    --bg-grad-5: var(--palette-bg-grad-light-5);
   }
 
   .dark {
-    --background: 224 14% 10%;
-    --foreground: 210 20% 98%;
-    --card: 224 14% 12%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 14% 12%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-    --secondary: 215 14% 18%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 14% 18%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 14% 18%;
-    --accent-foreground: 210 20% 98%;
+    --background: 160 15% 8%;
+    --foreground: 0 0% 98%;
+    --card: 160 15% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 160 15% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 140 10% 3.9%;
+    --secondary: 160 15% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 160 15% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 160 15% 15%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 14% 18%;
-    --input: 215 14% 18%;
-    --ring: 216 14% 70%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 160 15% 15%;
+    --input: 160 15% 15%;
+    --ring: 158 64% 52%;
+
+    /* Mapped Variables (Dark Mode Override) */
+    --bg-base: var(--palette-bg-base-dark);
+    --bg-grad-1: var(--palette-bg-grad-dark-1);
+    --bg-grad-2: var(--palette-bg-grad-dark-2);
+    --bg-grad-3: var(--palette-bg-grad-dark-3);
+    --bg-grad-4: var(--palette-bg-grad-dark-4);
+    --bg-grad-5: var(--palette-bg-grad-dark-5);
   }
 }
 
@@ -63,8 +103,17 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+    
+    /* Dynamic Background using variables */
+    background-color: var(--bg-base);
+    background-image: 
+      radial-gradient(at 0% 0%, var(--bg-grad-1) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, var(--bg-grad-2) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, var(--bg-grad-3) 0, transparent 50%),
+      radial-gradient(at 100% 100%, var(--bg-grad-4) 0, transparent 50%),
+      radial-gradient(at 0% 100%, var(--bg-grad-5) 0, transparent 50%);
     background-attachment: fixed;
+    background-size: cover;
   }
 
   ::selection {

@@ -60,7 +60,7 @@ const About = () => {
                   {/* Education Timeline */}
                   <div className="space-y-8">
                     {/* Current Education */}
-                    <div className="relative pl-8 border-l-2 border-primary/20">
+                    <motion.div variants={itemVariants} className="relative pl-8 border-l-2 border-primary/20">
                       <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-4 border-background"></div>
                       <div className="space-y-2">
                         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -75,10 +75,10 @@ const About = () => {
                           Current CGPA: 7.12/10
                         </Badge>
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* Senior Secondary */}
-                    <div className="relative pl-8 border-l-2 border-primary/20">
+                    <motion.div variants={itemVariants} className="relative pl-8 border-l-2 border-primary/20">
                       <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-muted border-4 border-background"></div>
                       <div className="space-y-2">
                         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -93,10 +93,10 @@ const About = () => {
                           Percentage: 68.00%
                         </Badge>
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* Secondary */}
-                    <div className="relative pl-8 border-l-2 border-primary/20">
+                    <motion.div variants={itemVariants} className="relative pl-8 border-l-2 border-primary/20">
                       <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-muted border-4 border-background"></div>
                       <div className="space-y-2">
                         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -111,7 +111,7 @@ const About = () => {
                           Percentage: 78.00%
                         </Badge>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
                 </CardContent>
               </Card>

@@ -11,24 +11,24 @@ const Skills = () => {
   const item = { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0, transition: { duration: 0.35 } } }
 
   const technicalSkills = [
-    { name: 'React', icon: FaReact, color: 'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300' },
-    { name: 'JavaScript', icon: FaJs, color: 'bg-yellow-50 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-300' },
-    { name: 'HTML5', icon: FaHtml5, color: 'bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300' },
-    { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'bg-cyan-50 text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300' },
-    { name: 'Vite', icon: SiVite, color: 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300' },
-    { name: 'Node.js', icon: FaNode, color: 'bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300' },
-    { name: 'PostgreSQL', icon: SiPostgresql, color: 'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300' },
-    { name: 'MongoDB', icon: SiMongodb, color: 'bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300' },
-    { name: 'Docker', icon: FaDocker, color: 'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300' },
-    { name: 'Git', icon: FaGitAlt, color: 'bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300' },
+    { name: 'React', icon: FaReact, color: '#61DAFB' },
+    { name: 'JavaScript', icon: FaJs, color: '#F7DF1E' },
+    { name: 'HTML5', icon: FaHtml5, color: '#E34F26' },
+    { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+    { name: 'Vite', icon: SiVite, color: '#646CFF' },
+    { name: 'Node.js', icon: FaNode, color: '#339933' },
+    { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+    { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+    { name: 'Docker', icon: FaDocker, color: '#2496ED' },
+    { name: 'Git', icon: FaGitAlt, color: '#F05032' },
   ]
 
   const softwareTools = [
-    { name: 'Visual Studio Code', icon: FaCode, color: 'bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300' },
-    { name: 'GitHub', icon: FaGithub, color: 'bg-gray-50 text-gray-700 dark:bg-gray-950 dark:text-gray-300' },
-    { name: 'Vercel', icon: SiVercel, color: 'bg-black text-white dark:bg-white dark:text-black' },
-    { name: 'Figma', icon: SiFigma, color: 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300' },
-    { name: 'Postman', icon: SiPostman, color: 'bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300' },
+    { name: 'Visual Studio Code', icon: FaCode, color: '#007ACC' },
+    { name: 'GitHub', icon: FaGithub, color: '#ffffff' },
+    { name: 'Vercel', icon: SiVercel, color: '#ffffff' },
+    { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
+    { name: 'Postman', icon: SiPostman, color: '#FF6C37' },
   ]
 
   return (
@@ -54,9 +54,13 @@ const Skills = () => {
                   <Badge 
                     key={skill.name} 
                     variant="secondary" 
-                    className={`rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105`}
+                    className="rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105"
+                    style={{
+                      backgroundColor: skill.color + '10',
+                      border: `1px solid ${skill.color}20`
+                    }}
                   >
-                    <skill.icon className={`h-4 w-4 ${skill.color.split(' ')[1]}`} />
+                    <skill.icon className="h-4 w-4" style={{ color: skill.color }} />
                     <span className="text-foreground/80">{skill.name}</span>
                   </Badge>
                 ))}
@@ -70,9 +74,13 @@ const Skills = () => {
                   <Badge 
                     key={tool.name} 
                     variant="secondary" 
-                    className={`rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105`}
+                    className="rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105"
+                    style={{
+                      backgroundColor: tool.color + '10',
+                      border: `1px solid ${tool.color}20`
+                    }}
                   >
-                    <tool.icon className={`h-4 w-4 ${tool.color.split(' ')[1]}`} />
+                    <tool.icon className="h-4 w-4" style={{ color: tool.color }} />
                     <span className="text-foreground/80">{tool.name}</span>
                   </Badge>
                 ))}
