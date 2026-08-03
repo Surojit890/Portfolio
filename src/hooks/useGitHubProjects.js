@@ -4,7 +4,7 @@ import { projectOverrides } from "@/data/projectOverrides";
 const GITHUB_USERNAME = "Surojit890";
 const PORTFOLIO_TOPIC = "portfolio";
 const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`;
-const CACHE_KEY = "github-projects-cache";
+const CACHE_KEY = "github-projects-cache-v2";
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
 const readCache = () => {
@@ -89,7 +89,11 @@ export const useGitHubProjects = () => {
           (repo) => repo.topics && repo.topics.includes(PORTFOLIO_TOPIC)
         );
         const mapped = sortProjects(filtered.map(toProject));
-        writeCache(mapped);
+        // Never cache an empty result — otherwise a visit made before
+        // topics were added would hide projects for the whole TTL.
+        if (mapped.length > 0) {
+          writeCache(mapped);
+        }
         if (!cancelled) {
           setProjects(mapped);
           setError(null);
