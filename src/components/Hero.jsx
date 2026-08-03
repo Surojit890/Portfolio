@@ -100,7 +100,7 @@ const Hero = () => {
               className="h-14 px-8 text-lg font-medium rounded-full bg-white dark:bg-white/10 text-foreground border border-input hover:bg-accent/10 hover:border-accent hover:-translate-y-1 transition-all duration-300 shadow-sm"
             >
               <a
-                href="/Surojit-Resume.pdf"
+                href="/Surojit_Mondal_Resume.pdf"
                 download="Surojit_Mondal_Resume.pdf"
                 className="flex items-center gap-2"
               >
