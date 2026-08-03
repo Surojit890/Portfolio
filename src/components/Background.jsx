@@ -18,14 +18,13 @@ const Background = () => {
         setMounted(true);
     }, []);
 
-    const icons = [
-        FaReact, FaJs, FaPython, FaNode, FaHtml5, FaCss3, FaGitAlt,
-        SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, VscCode,
-        FaDocker, FaAws, SiNextdotjs, SiVite, SiGraphql, SiFirebase, 
-        FaRust, FaJava, SiLinux
-    ];
-
     const floatingIcons = useMemo(() => {
+        const icons = [
+            FaReact, FaJs, FaPython, FaNode, FaHtml5, FaCss3, FaGitAlt,
+            SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, VscCode,
+            FaDocker, FaAws, SiNextdotjs, SiVite, SiGraphql, SiFirebase, 
+            FaRust, FaJava, SiLinux
+        ];
         return Array.from({ length: 50 }).map((_, i) => {
             const Icon = icons[i % icons.length];
             // Random positioning and delay logic
