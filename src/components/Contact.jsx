@@ -8,6 +8,14 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane, FaCheckCircle, FaExc
 import { useInView } from 'react-intersection-observer'
 import emailjs from '@emailjs/browser'
 
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+if (EMAILJS_PUBLIC_KEY) {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY })
+}
+
 const Contact = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
@@ -20,10 +28,6 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
-
-  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
-  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
   const handleChange = (e) => {
     setFormData({
@@ -46,18 +50,13 @@ const Contact = () => {
     }
 
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
           from_name: formData.name,
           from_email: formData.email,
           subject: formData.subject,
           message: formData.message,
           to_email: 'msurojit890@gmail.com',
-        },
-        EMAILJS_PUBLIC_KEY
-      )
+        })
 
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
@@ -85,8 +84,8 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="container px-4 md:px-6 relative z-10">
+    <section id="contact" className="py-24 relative overflow-hidden scroll-mt-16">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           ref={ref}
           variants={container}

@@ -33,8 +33,8 @@ const Hero = () => {
   ]
 
   return (
-    <section id="hero" className="min-h-[calc(100vh-4rem)] flex items-center justify-center relative overflow-hidden">
-      <div className="container px-4 md:px-6 py-16 md:py-24 relative z-10">
+    <section id="hero" className="min-h-[calc(100vh-4rem)] flex items-start justify-center relative overflow-hidden scroll-mt-16 pt-16 md:pt-24">
+      <div className="container mx-auto px-4 md:px-6 py-8 md:py-16 relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 items-center max-w-5xl mx-auto">
 
           <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
@@ -57,9 +57,9 @@ const Hero = () => {
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-4"
             >
-              <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+              <h1 className="font-heading text-4xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.05]">
                 Hi, I&apos;m{' '}
-                <span className="text-gradient">Surojit Mondal</span>
+                <span className="text-primary">Surojit Mondal</span>
               </h1>
 
               <div className="text-xl md:text-3xl text-muted-foreground font-light flex items-center gap-3 flex-wrap justify-center lg:justify-start">
@@ -151,7 +151,7 @@ const Hero = () => {
           >
             <div className="relative w-full max-w-sm">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl" />
-              <div className="relative glass rounded-2xl p-6 shadow-2xl">
+              <div className="relative liquid-glass rounded-2xl p-6 shadow-2xl">
                 <div className="flex items-center gap-2 mb-4 pb-4 border-b border-border/30">
                   <div className="flex gap-1.5">
                     <span className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -163,26 +163,26 @@ const Hero = () => {
 
                 <pre className="font-mono text-sm leading-relaxed text-muted-foreground">
                   <code>
-                    <span className="text-accent">const</span>{' '}
+                    <span className="text-primary">const</span>{' '}
                     <span className="text-primary">developer</span>{' '}
                     <span className="text-muted-foreground">= {'{'}</span>
                     {'\n  '}
-                    <span className="text-blue-400">name</span>
+                    <span className="text-amber-300">name</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-green-400">'Surojit'</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-blue-400">role</span>
+                    <span className="text-amber-300">role</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-green-400">'Full Stack'</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-blue-400">location</span>
+                    <span className="text-amber-300">location</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-green-400">'Kolkata'</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-blue-400">stack</span>
+                    <span className="text-amber-300">stack</span>
                     <span className="text-muted-foreground">: [</span>
                     {'\n    '}
                     <span className="text-green-400">'React'</span>
@@ -196,14 +196,14 @@ const Hero = () => {
                     {'\n  ]'}
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-blue-400">available</span>
+                    <span className="text-amber-300">available</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-primary">true</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-blue-400">focus</span>
+                    <span className="text-amber-300">focus</span>
                     <span className="text-muted-foreground">:</span>{' '}
-                    <span className="text-accent">'building'</span>
+                    <span className="text-primary">'building'</span>
                     {'\n'}
                     <span className="text-muted-foreground">{'}'}</span>
                   </code>

@@ -49,8 +49,8 @@ const Skills = () => {
   ]
 
   return (
-    <section id="skills" className="py-24 relative">
-      <div className="container px-4 md:px-6">
+    <section id="skills" className="py-24 relative scroll-mt-16">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           ref={ref}
           variants={container}

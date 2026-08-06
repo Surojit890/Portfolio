@@ -15,7 +15,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <Router>
-        <div className="flex flex-col min-h-screen relative">
+        <div className="flex flex-col min-h-screen relative overflow-x-hidden">
           <Background />
           <Header />
           <main className="flex-1">

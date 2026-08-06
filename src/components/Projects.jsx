@@ -7,12 +7,12 @@ import { useInView } from 'react-intersection-observer'
 import { useGitHubProjects } from '@/hooks/useGitHubProjects'
 
 const GRADIENTS = [
-  'from-blue-500 via-cyan-500 to-teal-400',
-  'from-indigo-500 via-blue-500 to-cyan-400',
-  'from-sky-500 via-blue-500 to-indigo-400',
-  'from-cyan-500 via-sky-500 to-blue-400',
-  'from-blue-600 via-indigo-500 to-purple-500',
-  'from-teal-500 via-cyan-500 to-sky-400',
+  'from-amber-500 via-orange-500 to-amber-300',
+  'from-orange-500 via-amber-500 to-yellow-300',
+  'from-rose-500 via-orange-500 to-amber-400',
+  'from-fuchsia-500 via-rose-500 to-orange-400',
+  'from-yellow-500 via-amber-500 to-orange-400',
+  'from-orange-400 via-rose-500 to-amber-500',
 ]
 
 const hashString = (str) => {
@@ -57,8 +57,8 @@ const Projects = () => {
   }
 
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="container px-4 md:px-6">
+    <section id="projects" className="py-24 relative overflow-hidden scroll-mt-16">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           ref={ref}
           initial="hidden"
@@ -117,8 +117,8 @@ const Projects = () => {
               </p>
             </motion.div>
           ) : (
-            <motion.div variants={itemVariants} className="mx-auto max-w-md px-4 md:max-w-4xl md:px-8 lg:px-12">
-              <div className="relative grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center md:gap-16">
+            <motion.div variants={itemVariants} className="mx-auto max-w-md px-4 md:max-w-3xl md:px-8">
+              <div className="relative grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center md:gap-12">
 
                 {/* Left: Animated gradient card */}
                 <div>
@@ -278,7 +278,7 @@ const Projects = () => {
               </div>
 
               {/* Progress dots */}
-              <div className="flex justify-center gap-2 mt-12">
+              <div className="flex justify-center gap-2 pt-8 md:pt-10">
                 {projects.map((_, index) => (
                   <button
                     key={index}

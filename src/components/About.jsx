@@ -88,8 +88,8 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-24 relative">
-      <div className="container px-4 md:px-6">
+    <section id="about" className="py-24 relative scroll-mt-16">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -106,10 +106,10 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 justify-items-center">
             {focusAreas.map((area) => (
-              <motion.div key={area.title} variants={itemVariants}>
-                <Card className="h-full border-border/40 bg-card/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
+              <motion.div key={area.title} variants={itemVariants} className="w-full">
+                <Card className="h-full w-full max-w-sm border-border/40 bg-card/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
                   <CardContent className="p-6 space-y-3">
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${area.bg} ${area.color} group-hover:scale-110 transition-transform duration-300`}>
                       <area.icon className="h-6 w-6" />
@@ -122,8 +122,8 @@ const About = () => {
             ))}
           </div>
 
-          <motion.div variants={itemVariants}>
-            <Card className="border-border/40 bg-card/50 backdrop-blur-sm shadow-lg">
+          <motion.div variants={itemVariants} className="flex justify-center">
+            <Card className="w-full max-w-4xl border-border/40 bg-card/50 backdrop-blur-sm shadow-lg">
               <CardContent className="p-8 md:p-10">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="p-3 rounded-xl bg-primary/10">
