@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react'
-import Ballpit from './Ballpit'
+import LiquidChrome from './LiquidChrome'
 import { useTheme } from '@/components/use-theme'
 
 const Background = () => {
   const { theme } = useTheme()
   const [isDark, setIsDark] = useState(false)
-  const [ballConfig, setBallConfig] = useState({
-    count: 50,
-    minSize: 0.5,
-    maxSize: 1,
-    maxVelocity: 0.15,
-  })
 
   useEffect(() => {
     const resolve = () => {
@@ -21,46 +15,30 @@ const Background = () => {
       }
     }
     resolve()
-  }, [theme])
 
-  useEffect(() => {
-    const updateConfig = () => {
-      const w = window.innerWidth
-      if (w < 640) {
-        setBallConfig({ count: 12, minSize: 0.3, maxSize: 0.6, maxVelocity: 0.08 })
-      } else if (w < 1024) {
-        setBallConfig({ count: 25, minSize: 0.4, maxSize: 0.8, maxVelocity: 0.12 })
-      } else {
-        setBallConfig({ count: 50, minSize: 0.5, maxSize: 1, maxVelocity: 0.15 })
-      }
+    if (theme === 'system') {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)')
+      mq.addEventListener('change', resolve)
+      return () => mq.removeEventListener('change', resolve)
     }
-    updateConfig()
-    window.addEventListener('resize', updateConfig)
-    return () => window.removeEventListener('resize', updateConfig)
-  }, [])
+  }, [theme])
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-[-1]">
-      <Ballpit
-        count={ballConfig.count}
-        gravity={0}
-        friction={0.988}
-        wallBounce={0.95}
-        followCursor={true}
-        colors={isDark
-          ? [0x1e293b, 0x334155, 0x475569]
-          : [0x78350f, 0x92400e, 0xb45309]
-        }
-        ambientColor={0x0b0f19}
-        ambientIntensity={0.8}
-        lightIntensity={140}
-        minSize={ballConfig.minSize}
-        maxSize={ballConfig.maxSize}
-        size0={1}
-        maxVelocity={ballConfig.maxVelocity}
-        maxX={5}
-        maxY={5}
-        maxZ={2}
+      <LiquidChrome
+        speed={0.1}
+        amplitude={0.2}
+        frequencyX={3}
+        frequencyY={2.5}
+        dark={isDark}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: isDark
+            ? 'linear-gradient(180deg, rgba(11,15,25,0.5) 0%, rgba(11,15,25,0.35) 40%, rgba(11,15,25,0.45) 100%)'
+            : 'linear-gradient(180deg, rgba(248,250,252,0.4) 0%, rgba(248,250,252,0.2) 40%, rgba(248,250,252,0.35) 100%)',
+        }}
       />
     </div>
   )
