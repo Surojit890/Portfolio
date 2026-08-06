@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 40 30% 98%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 38 40% 95%;
     --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
+    --muted: 38 30% 95%;
     --muted-foreground: 215 16% 47%;
-    --accent: 189 94% 43%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 24 95% 53%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 20% 88%;
-    --input: 214 20% 88%;
-    --ring: 217 91% 60%;
+    --border: 38 20% 88%;
+    --input: 38 20% 88%;
+    --ring: 38 92% 50%;
     --radius: 0.875rem;
 
-    --bg-base: hsl(210, 40%, 98%);
-    --bg-grad-1: hsla(217, 70%, 92%, 0.7);
-    --bg-grad-2: hsla(189, 65%, 90%, 0.5);
-    --bg-grad-3: hsla(210, 60%, 93%, 0.6);
-    --bg-grad-4: hsla(195, 55%, 91%, 0.4);
-    --bg-grad-5: hsla(220, 50%, 95%, 0.5);
+    --bg-base: hsl(40, 30%, 98%);
+    --bg-grad-1: hsla(38, 70%, 92%, 0.7);
+    --bg-grad-2: hsla(24, 65%, 90%, 0.5);
+    --bg-grad-3: hsla(38, 60%, 93%, 0.6);
+    --bg-grad-4: hsla(30, 55%, 91%, 0.4);
+    --bg-grad-5: hsla(38, 50%, 95%, 0.5);
   }
 
   .dark {
@@ -215,6 +215,63 @@
   }
 
   .liquid-glass > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .terminal-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .dark .terminal-card {
+    background: hsl(var(--card) / 0.25);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(var(--border) / 0.3);
+    box-shadow:
+      0 8px 32px hsl(222 47% 6% / 0.37),
+      inset 0 1px 1px hsl(0 0% 100% / 0.15),
+      inset 0 -1px 1px hsl(0 0% 0% / 0.1);
+  }
+
+  .dark .terminal-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      hsl(0 0% 100% / 0.12) 0%,
+      hsl(0 0% 100% / 0.03) 40%,
+      transparent 50%,
+      hsl(var(--primary) / 0.04) 80%,
+      hsl(var(--accent) / 0.06) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .dark .terminal-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(0 0% 100% / 0.4),
+      transparent
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .terminal-card > * {
     position: relative;
     z-index: 1;
   }

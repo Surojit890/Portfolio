@@ -150,13 +150,13 @@ const Hero = () => {
             className="lg:col-span-2 hidden lg:flex justify-center"
           >
             <div className="relative w-full max-w-sm">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl" />
-              <div className="relative liquid-glass rounded-2xl p-6 shadow-2xl">
-                <div className="flex items-center gap-2 mb-4 pb-4 border-b border-border/30">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl hidden dark:block" />
+              <div className="relative terminal-card rounded-2xl p-6">
+                <div className="flex items-center gap-2 -mx-6 -mt-6 px-6 py-3 mb-4 border-b border-slate-200 dark:border-border/30 bg-slate-100 dark:bg-transparent rounded-t-2xl">
                   <div className="flex gap-1.5">
-                    <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-red-500" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-500" />
+                    <span className="w-3 h-3 rounded-full bg-green-500" />
                   </div>
                   <span className="ml-2 text-xs text-muted-foreground font-mono">developer.ts</span>
                 </div>
@@ -167,22 +167,22 @@ const Hero = () => {
                     <span className="text-primary">developer</span>{' '}
                     <span className="text-muted-foreground">= {'{'}</span>
                     {'\n  '}
-                    <span className="text-amber-300">name</span>
+                    <span className="text-amber-600 dark:text-amber-300">name</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-green-400">'Surojit'</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-amber-300">role</span>
+                    <span className="text-amber-600 dark:text-amber-300">role</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-green-400">'Full Stack'</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-amber-300">location</span>
+                    <span className="text-amber-600 dark:text-amber-300">location</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-green-400">'Kolkata'</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-amber-300">stack</span>
+                    <span className="text-amber-600 dark:text-amber-300">stack</span>
                     <span className="text-muted-foreground">: [</span>
                     {'\n    '}
                     <span className="text-green-400">'React'</span>
@@ -196,12 +196,12 @@ const Hero = () => {
                     {'\n  ]'}
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-amber-300">available</span>
+                    <span className="text-amber-600 dark:text-amber-300">available</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-primary">true</span>
                     <span className="text-muted-foreground">,</span>
                     {'\n  '}
-                    <span className="text-amber-300">focus</span>
+                    <span className="text-amber-600 dark:text-amber-300">focus</span>
                     <span className="text-muted-foreground">:</span>{' '}
                     <span className="text-primary">'building'</span>
                     {'\n'}
@@ -209,7 +209,7 @@ const Hero = () => {
                   </code>
                 </pre>
 
-                <div className="flex items-center gap-3 mt-5 pt-4 border-t border-border/30">
+                <div className="flex items-center gap-3 mt-5 pt-4 border-t border-slate-200 dark:border-border/30">
                   {stackIcons.map(({ Icon, color, delay }) => (
                     <motion.div
                       key={delay}

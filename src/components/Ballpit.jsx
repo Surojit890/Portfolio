@@ -336,6 +336,7 @@ function TouchStart(e) {
     A.y = e.touches[0].clientY
 
     for (const [elem, t] of b) {
+      if (getComputedStyle(elem).pointerEvents === 'none') continue
       const rect = elem.getBoundingClientRect()
       if (D(rect)) {
         e.preventDefault()
@@ -358,6 +359,7 @@ function TouchMove(e) {
 
     let withinBounds = false
     for (const [elem, t] of b) {
+      if (getComputedStyle(elem).pointerEvents === 'none') continue
       const rect = elem.getBoundingClientRect()
 
       if (D(rect)) {
