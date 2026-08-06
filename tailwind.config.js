@@ -9,6 +9,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        body: ['DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

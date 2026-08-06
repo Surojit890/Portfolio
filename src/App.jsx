@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import './App.css'
 
 // Components
 import { ThemeProvider } from './components/theme-provider'
@@ -11,14 +10,12 @@ import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Background from './components/Background'
-import ThemeController from './components/ThemeController'
 
 function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
       <Router>
         <div className="flex flex-col min-h-screen relative">
-          <ThemeController />
           <Background />
           <Header />
           <main className="flex-1">
